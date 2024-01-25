@@ -1,7 +1,6 @@
 #!/bin/bash
 
 source /cvmfs/cms.cern.ch/cmsset_default.sh
-export SCRAM_ARCH=slc7_amd64_gcc11
 export X509_USER_PROXY=/afs/cern.ch/user/s/silveira/private/x509up_u37419
 voms-proxy-info -all
 voms-proxy-info -all -file /afs/cern.ch/user/s/silveira/private/x509up_u37419
@@ -14,6 +13,8 @@ json=$6
 align=$7
 gt=$8
 inputs=$9
+scram=${10}
+export SCRAM_ARCH=$scram
 scram project $cmssw
 cd $cmssw/src/
 eval `scramv1 runtime -sh`
